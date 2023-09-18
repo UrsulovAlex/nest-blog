@@ -27,5 +27,5 @@ export class UpdatePostDto extends PartialType(CreatePostDto) {
 
   @IsNumber()
   @IsOptional()
-  readonly comments: number;
+  readonly commentsId: number;
 }

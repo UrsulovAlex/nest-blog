@@ -8,6 +8,7 @@ import {
   Delete,
   HttpCode,
   HttpStatus,
+  Put,
 } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
@@ -35,7 +36,7 @@ export class CategoryController {
     return this.categoryService.findOne(+id);
   }
 
-  @Patch('update/:id')
+  @Put('update/:id')
   @HttpCode(HttpStatus.OK)
   update(
     @Param('id') id: string,

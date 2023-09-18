@@ -7,3 +7,4 @@ temp/
 ormconfig.ts
 /src/db
 .env
+dist/

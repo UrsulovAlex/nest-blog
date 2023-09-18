@@ -18,13 +18,13 @@ export class PostEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true })
   title: string;
 
-  @Column({ nullable: false, length: 12000})
+  @Column({ nullable: true, length: 12000 })
   text: string;
 
-  @Column({ select: false })
+  @Column({ nullable: true })
   authorPostsId: number;
 
   @ManyToOne(() => AdminEntity, (author) => author.posts, { eager: true })
@@ -46,7 +46,7 @@ export class PostEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @Column({ select: false })
+  @Column({ nullable: true })
   commentsId: number;
 
   @OneToMany(() => CommentEntity, (postComment) => postComment.commentPost)

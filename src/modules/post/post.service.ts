@@ -29,24 +29,18 @@ export class PostService {
   }
 
   async findOne(id: number): Promise<PostEntity> {
-    try {
-      return await this.postRepository.findOne({
-        where: { id },
-        relations: {
-          nameCategory: true,
-          postComments: true,
-          author: true,
-        },
-      });
-    } catch (error) {
-      throw new Error(error);
-    }
+    return await this.postRepository.findOne({
+      where: { id: id },
+      relations: {
+        nameCategory: true,
+        postComments: true,
+        author: true,
+      },
+    });
   }
 
   async updatePosts(id: number, udatePostDto: UpdatePostDto) {
-    const postUpdate = await this.findOne(id);
-    return this.postRepository.save({
-      ...postUpdate,
+    return await this.postRepository.update(id, {
       ...udatePostDto,
     });
   }

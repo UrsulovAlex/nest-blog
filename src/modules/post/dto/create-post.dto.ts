@@ -30,5 +30,5 @@ export class CreatePostDto {
   readonly categoryId: number;
 
   @IsNumber()
-  readonly comments: number;
+  readonly commentsId: number;
 }
