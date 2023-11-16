@@ -16,8 +16,12 @@ export class CategoryService {
     return this.categoryRepository.save(category);
   }
 
-  findAll() {
-    return this.categoryRepository.find();
+  async findAll(): Promise<any> {
+    return await this.categoryRepository.find({
+      relations: {
+        categoryPosts: true,
+      }
+    });
   }
 
   async findOne(id: number): Promise<CategoryEntity> {
@@ -38,5 +42,12 @@ export class CategoryService {
   async remove(id: number): Promise<CategoryEntity> {
     const removeCategory = await this.findOne(id);
     return await this.categoryRepository.remove(removeCategory);
+  }
+
+  async queryBuilderCounterPost() {
+    return await this.categoryRepository
+      .createQueryBuilder('category_entity')
+      .loadRelationCountAndMap('category_entity.categoryPostsCount', 'category_entity.categoryPosts')
+      .getMany();
   }
 }

@@ -27,7 +27,6 @@ export class PostController {
     const builder = await this.postService.queryBuilder();
 
     if (req.query.search) {
-      console.log('search', req.query.search);
       builder.where(
         'post_entity.title LIKE :search OR post_entity.text LIKE :search',
         { search: `%${req.query.search}%` },

@@ -11,4 +11,6 @@ export class CategoryEntity {
 
   @OneToMany(() => PostEntity, (category) => category.nameCategory)
   categoryPosts: PostEntity[];
+
+  categoryPostsCount: number;
 }

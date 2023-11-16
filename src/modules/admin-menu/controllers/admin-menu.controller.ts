@@ -14,7 +14,7 @@ export class AdminMenuController {
     return [
       {
         name: 'Dashboard',
-        href: ['dashboard'],
+        href: ['./'],
         icon: 'dashboard',
       },
       {

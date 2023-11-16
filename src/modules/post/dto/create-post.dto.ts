@@ -28,7 +28,4 @@ export class CreatePostDto {
   @IsNotEmpty({ message: 'categoryId must Be No tEmpty' })
   @IsNumber()
   readonly categoryId: number;
-
-  @IsNumber()
-  readonly commentsId: number;
 }
